@@ -1,0 +1,109 @@
+---
+title: "Bude"
+author: "Brianna Kincaid"
+date: "March 21, 2018"
+output: pdf_document
+---
+
+# Set up
+First import necessary libraries.
+```{r, results="hide"}
+library(ggmap)
+library(tidyverse)
+```
+
+
+Bude is a town in Western England, well-known as a beach resort. We find the coordinates using \texttt{geocode()}.
+```{r, results = "hide"}
+Bude_coord <- geocode("S W Coast Path, Bude EX23 8HN, UK") 
+```
+I chose the center of the map to be the Bude North Cornwall Cricket Club, as that is the central location of this assignment, and allows for better viewing of the surrounding area. 
+
+# Road map
+```{r, results = "hide"}
+Bude_roadmap <- get_map(Bude_coord, zoom = 15)
+```
+
+```{r}
+ggmap(Bude_roadmap)
+```
+
+# Watercolor map
+```{r, results = "hide"}
+Bude_watercolor <- get_map(Bude_coord, maptype = "watercolor", zoom = 15)
+```
+```{r}
+ggmap(Bude_watercolor)
+```
+
+# Marking vacation spots
+
+## Two local beaches
+### Summerleaze Beach
+
+```{r, results = "hide"}
+summerleaze <- geocode("Summerleaze Beach, Summerleaze Cres, Bude EX23 8HN, UK")
+```
+### Crooklets Beach
+```{r, results = "hide"}
+crooklets <- geocode("Crooklets Beach, S W Coast Path, Bude EX23 8NE, UK")
+```
+### Cricket grounds (Bude North Cornwall Cricket Club)
+```{r, results = "hide"}
+cricket_grounds_coord <-geocode("Bude North Cornwall Cricket Club")
+```
+### Putting them on the maps
+```{r}
+ggmap(Bude_roadmap) +
+  geom_point(mapping = aes(x = summerleaze$lon, y = summerleaze$lat)) +
+  geom_label(x = summerleaze$lon, y = summerleaze$lat, label = "Summerleaze Beach", hjust = 1, vjust=1) +
+  geom_point(mapping = aes(x = crooklets$lon, y = crooklets$lat)) +
+  geom_label(x = crooklets$lon, y = crooklets$lat, label = "Crooklets Beach", hjust = 1, vjust=1) +
+  geom_point(mapping = aes(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat)) +
+  geom_label(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat, label = "Cricket Grounds", hjust = 1, vjust = 1)
+```
+
+```{r}
+ggmap(Bude_watercolor) +
+  geom_point(mapping = aes(x = summerleaze$lon, y = summerleaze$lat)) +
+  geom_label(x = summerleaze$lon, y = summerleaze$lat, label = "Summerleaze Beach", hjust = 1, vjust=1) +
+  geom_point(mapping = aes(x = crooklets$lon, y = crooklets$lat)) +
+  geom_label(x = crooklets$lon, y = crooklets$lat, label = "Crooklets Beach", hjust = 1, vjust=1) +
+  geom_point(mapping = aes(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat)) +
+  geom_label(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat, label = "Cricket Grounds", hjust = 1, vjust = 1)
+```
+
+# Marking route from Bude North Cornwall Cricket Club to The Barrel at Bude
+
+## The Barrel at Bude:
+```{r, results = "hide"}
+barrel <- geocode("36 Lansdown Rd, Bude EX23 8BN, UK")
+```
+
+## The route:
+```{r, results = "hide"}
+from <- "Bude North Cornwall Cricket Club"
+to <- "36 Lansdown Rd, Bude EX23 8BN, UK"
+route_df <- route(from, to, structure = "route")
+```
+
+```{r}
+ggmap(Bude_roadmap) +
+  geom_point(mapping = aes(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat)) +
+  geom_label(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat, label = "Cricket Grounds", hjust = 1, vjust = 1) +
+  geom_point(mapping = aes(x = barrel$lon, y = barrel$lat)) +
+  geom_label(x = barrel$lon, y = barrel$lat, label = "The Barrel at Bude", hjust = 1, vjust = 1) +  
+  geom_path(aes(x = lon, y = lat), colour = "red", size = 1.5,
+            data = route_df, lineend = "round")
+```
+
+```{r}
+ggmap(Bude_watercolor) +
+  geom_point(mapping = aes(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat)) +
+  geom_label(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat, label = "Cricket Grounds", hjust = 1, vjust = 1) +
+  geom_point(mapping = aes(x = barrel$lon, y = barrel$lat)) +
+  geom_label(x = barrel$lon, y = barrel$lat, label = "The Barrel at Bude", hjust = 1, vjust = 1) +  
+  geom_path(aes(x = lon, y = lat), colour = "red", size = 1.5,
+            data = route_df, lineend = "round")
+```
+
