@@ -10,6 +10,7 @@ First import necessary libraries.
 ```{r, results="hide"}
 library(ggmap)
 library(tidyverse)
+library(knitr)
 ```
 
 
@@ -37,18 +38,33 @@ ggmap(Bude_watercolor)
 ```
 
 # Marking vacation spots
+There are a number of good beaches in the Bude area, many of which offer good surfing conditions.
 
 ## Two local beaches
 ### Summerleaze Beach
+```{r out.width = "50%"}
+include_graphics("summerleaze.jpg")
+```
 
 ```{r, results = "hide"}
 summerleaze <- geocode("Summerleaze Beach, Summerleaze Cres, Bude EX23 8HN, UK")
 ```
 ### Crooklets Beach
+```{r out.width = "200%"}
+include_graphics("crooklets.jpg")
+```
+
 ```{r, results = "hide"}
 crooklets <- geocode("Crooklets Beach, S W Coast Path, Bude EX23 8NE, UK")
 ```
 ### Cricket grounds (Bude North Cornwall Cricket Club)
+
+"Bude North Cornwall Cricket Club is situated on the clifftops overlooking the Atlantic Ocean, and is quite simply one of the most stunning locations you could ever wish to visit, let alone play cricket at! Bude North Cornwall Cricket Club was founded in 1870. Over the years it has played host to Hockey matches, Tennis, Cricket and even used for Mortar practice in WW2!" [Source.](http://budecc.play-cricket.com/)
+
+```{r out.width = "25%"}
+include_graphics("cricket.jpg")
+```
+
 ```{r, results = "hide"}
 cricket_grounds_coord <-geocode("Bude North Cornwall Cricket Club")
 ```
@@ -76,6 +92,11 @@ ggmap(Bude_watercolor) +
 # Marking route from Bude North Cornwall Cricket Club to The Barrel at Bude
 
 ## The Barrel at Bude:
+```{r out.width = "75%"}
+include_graphics("barrel.jpg")
+```
+The Barrel at Bude is one of the oldest buildings in Bude and was originally a sea canal worker's house. It was only the second micropub to open in Cornwall.
+
 ```{r, results = "hide"}
 barrel <- geocode("36 Lansdown Rd, Bude EX23 8BN, UK")
 ```

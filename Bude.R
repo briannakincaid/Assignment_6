@@ -64,7 +64,6 @@ ggmap(Bude_watercolor) +
 
 
 
-
 # Directions to the pub
 
 ### The Barrel at Bude Coordinates
