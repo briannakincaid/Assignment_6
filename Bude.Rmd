@@ -1,13 +1,14 @@
 ---
 title: "Bude"
 author: "Brianna Kincaid"
+contributor: "Matthew Ciaramitaro"
 date: "March 21, 2018"
 output: pdf_document
 ---
 
 # Set up
 First import necessary libraries.
-```{r, results="hide"}
+```{r setup, include=FALSE}
 library(ggmap)
 library(tidyverse)
 library(knitr)
