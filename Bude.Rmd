@@ -70,7 +70,7 @@ include_graphics("cricket.jpg")
 cricket_grounds_coord <-geocode("Bude North Cornwall Cricket Club")
 ```
 
-##Hotels
+## Hotels
 
 ### Oak Lodge Bed and Breakfast
 ```{r out.width = "25%"}
