@@ -1,9 +1,12 @@
 ---
 title: "Bude"
 author: "Brianna Kincaid"
-contributor: "Matthew Ciaramitaro"
 date: "March 21, 2018"
-output: pdf_document
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+contributor: Matthew Ciaramitaro
 ---
 
 # Set up

@@ -1,5 +1,7 @@
 # Assignment 6
 
+Please note: Bude.R and Bude.Rmd both run properly in the console, but knitr was stuggling to knit the Rmd file. It took me a couple of tries to get it to compile to a PDF, but the code does work.  
+
 ## Bude exploration
 
 - Find the town of Bude in Western England. This is a town that is well-known as a beach resort. You're going to make two maps of Bude – a road map and a watercolor map.
