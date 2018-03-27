@@ -68,6 +68,24 @@ include_graphics("cricket.jpg")
 ```{r, results = "hide"}
 cricket_grounds_coord <-geocode("Bude North Cornwall Cricket Club")
 ```
+
+### Oak Lodge Bed and Breakfast
+```{r out.width = "25%"}
+include_graphics("oaklodge.jpg")
+```
+
+```{r, results = "hide"}
+lodge_coord <-geocode("Stratton, Bude EX23 9AT, England")
+```
+### Falcon Hotel
+```{r out.width = "25%"}
+include_graphics("hotel.jpg")
+```
+
+```{r, results = "hide"}
+hotel_coord <-geocode("Breakwater Road, Bude EX23 8SD, England")
+```
+
 ### Putting them on the maps
 ```{r}
 ggmap(Bude_roadmap) +
@@ -76,7 +94,11 @@ ggmap(Bude_roadmap) +
   geom_point(mapping = aes(x = crooklets$lon, y = crooklets$lat)) +
   geom_label(x = crooklets$lon, y = crooklets$lat, label = "Crooklets Beach", hjust = 1, vjust=1) +
   geom_point(mapping = aes(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat)) +
-  geom_label(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat, label = "Cricket Grounds", hjust = 1, vjust = 1)
+  geom_label(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat, label = "Cricket Grounds", hjust = 1, vjust = 1) +
+  geom_point(mapping = aes(x = lodge_coord$lon, y = lodge_coord$lat)) +
+  geom_label(x = lodge_coord$lon, y = lodge_coord$lat, label = "Oak Lodge Bed and Breakfast", hjust = 1, vjust = 1) +
+  geom_point(mapping = aes(x = hotel_coord$lon, y = hotel_coord$lat)) +
+  geom_label(x = hotel_coord$lon, y = hotel_coord$lat, label = "Falcon Hotel", hjust = 1, vjust = 1) 
 ```
 
 ```{r}
@@ -86,7 +108,11 @@ ggmap(Bude_watercolor) +
   geom_point(mapping = aes(x = crooklets$lon, y = crooklets$lat)) +
   geom_label(x = crooklets$lon, y = crooklets$lat, label = "Crooklets Beach", hjust = 1, vjust=1) +
   geom_point(mapping = aes(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat)) +
-  geom_label(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat, label = "Cricket Grounds", hjust = 1, vjust = 1)
+  geom_label(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat, label = "Cricket Grounds", hjust = 1, vjust = 1)+
+  geom_point(mapping = aes(x = lodge_coord$lon, y = lodge_coord$lat)) +
+  geom_label(x = lodge_coord$lon, y = lodge_coord$lat, label = "Oak Lodge Bed and Breakfast", hjust = 1, vjust = 1)+
+  geom_point(mapping = aes(x = hotel_coord$lon, y = hotel_coord$lat)) +
+  geom_label(x = hotel_coord$lon, y = hotel_coord$lat, label = "Falcon Hotel", hjust = 1, vjust = 1) 
 ```
 
 # Marking route from Bude North Cornwall Cricket Club to The Barrel at Bude
