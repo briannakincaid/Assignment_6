@@ -58,7 +58,7 @@ include_graphics("crooklets.jpg")
 ```{r, results = "hide"}
 crooklets <- geocode("Crooklets Beach, S W Coast Path, Bude EX23 8NE, UK")
 ```
-### Cricket grounds (Bude North Cornwall Cricket Club)
+## Cricket grounds (Bude North Cornwall Cricket Club)
 
 "Bude North Cornwall Cricket Club is situated on the clifftops overlooking the Atlantic Ocean, and is quite simply one of the most stunning locations you could ever wish to visit, let alone play cricket at! Bude North Cornwall Cricket Club was founded in 1870. Over the years it has played host to Hockey matches, Tennis, Cricket and even used for Mortar practice in WW2!" [Source.](http://budecc.play-cricket.com/)
 
@@ -69,6 +69,8 @@ include_graphics("cricket.jpg")
 ```{r, results = "hide"}
 cricket_grounds_coord <-geocode("Bude North Cornwall Cricket Club")
 ```
+
+##Hotels
 
 ### Oak Lodge Bed and Breakfast
 ```{r out.width = "25%"}
@@ -90,15 +92,15 @@ hotel_coord <-geocode("Breakwater Road, Bude EX23 8SD, England")
 ### Putting them on the maps
 ```{r}
 ggmap(Bude_roadmap) +
-  geom_point(mapping = aes(x = summerleaze$lon, y = summerleaze$lat)) +
+  geom_point(data = summerleaze, mapping = aes(x = lon, y = lat)) +
   geom_label(x = summerleaze$lon, y = summerleaze$lat, label = "Summerleaze Beach", hjust = 1, vjust=1) +
-  geom_point(mapping = aes(x = crooklets$lon, y = crooklets$lat)) +
+  geom_point(data = crooklets, mapping = aes(x = lon, y = lat)) +
   geom_label(x = crooklets$lon, y = crooklets$lat, label = "Crooklets Beach", hjust = 1, vjust=1) +
-  geom_point(mapping = aes(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat)) +
+  geom_point(data = cricket_grounds_coord, mapping = aes(x = lon, y = lat)) +
   geom_label(x = cricket_grounds_coord$lon, y = cricket_grounds_coord$lat, label = "Cricket Grounds", hjust = 1, vjust = 1) +
-  geom_point(mapping = aes(x = lodge_coord$lon, y = lodge_coord$lat)) +
+  geom_point(data = lodge_coord, mapping = aes(x = lon, y = lat)) +
   geom_label(x = lodge_coord$lon, y = lodge_coord$lat, label = "Oak Lodge Bed and Breakfast", hjust = 1, vjust = 1) +
-  geom_point(mapping = aes(x = hotel_coord$lon, y = hotel_coord$lat)) +
+  geom_point(data = hotel_coord, mapping = aes(x = lon, y = lat)) +
   geom_label(x = hotel_coord$lon, y = hotel_coord$lat, label = "Falcon Hotel", hjust = 1, vjust = 1) 
 ```
 
