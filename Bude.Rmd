@@ -65,7 +65,7 @@ crooklets <- geocode("Crooklets Beach, S W Coast Path, Bude EX23 8NE, UK")
 
 "Bude North Cornwall Cricket Club is situated on the clifftops overlooking the Atlantic Ocean, and is quite simply one of the most stunning locations you could ever wish to visit, let alone play cricket at! Bude North Cornwall Cricket Club was founded in 1870. Over the years it has played host to Hockey matches, Tennis, Cricket and even used for Mortar practice in WW2!" [Source.](http://budecc.play-cricket.com/)
 
-```{r out.width = "25%"}
+```{r out.width = "60%"}
 include_graphics("cricket.jpg")
 ```
 
@@ -76,7 +76,7 @@ cricket_grounds_coord <-geocode("Bude North Cornwall Cricket Club")
 ## Hotels
 
 ### Oak Lodge Bed and Breakfast
-```{r out.width = "25%"}
+```{r out.width = "60%"}
 include_graphics("oaklodge.jpg")
 ```
 
@@ -84,7 +84,7 @@ include_graphics("oaklodge.jpg")
 lodge_coord <-geocode("Stratton, Bude EX23 9AT, England")
 ```
 ### Falcon Hotel
-```{r out.width = "25%"}
+```{r out.width = "60%"}
 include_graphics("hotel.jpg")
 ```
 
